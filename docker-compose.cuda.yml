@@ -3,11 +3,13 @@ services:
   build:
    context: .
    dockerfile: Dockerfile.cuda
+  image: facefusion:cuda-latest
   command: [ 'python', 'facefusion.py', 'run', '--execution-providers', 'cuda' ]
   volumes:
   - .assets:/facefusion/.assets
   - .caches:/facefusion/.caches
   - .jobs:/facefusion/.jobs
+  - data:/facefusion/data
   ports:
   - 7870:7860
   deploy:

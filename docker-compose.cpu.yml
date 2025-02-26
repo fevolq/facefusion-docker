@@ -3,11 +3,12 @@ services:
   build:
    context: .
    dockerfile: Dockerfile.cpu
-  command: [ 'python', 'facefusion.py', 'run' ]
+  image: facefusion:${IMAGE_TAG:-cpu}
+  command: [ 'python', 'facefusion.py', '${MODE:-run}', '--execution-providers', 'cpu' ]
   volumes:
   - .assets:/facefusion/.assets
   - .caches:/facefusion/.caches
   - .jobs:/facefusion/.jobs
   - ./data:/facefusion/data
   ports:
-  - 7865:7860
+  - ${EXPOSE_PORT:-7860}:7860

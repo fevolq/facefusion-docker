@@ -4,7 +4,7 @@ services:
    context: .
    dockerfile: Dockerfile.cuda
   image: facefusion:${IMAGE_TAG:-cuda}
-  command: [ 'python', 'facefusion.py', '${MODE:-run}', '--execution-providers', 'cuda' ]
+  command: [ 'python', 'facefusion.py', '${MODE:-run}', '--execution-providers', 'cuda', '--log-level', '${LOG_LEVEL:-info}' ]
   volumes:
   - .assets:/facefusion/.assets
   - .caches:/facefusion/.caches

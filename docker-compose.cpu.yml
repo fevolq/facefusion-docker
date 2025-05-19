@@ -4,7 +4,7 @@ services:
    context: .
    dockerfile: Dockerfile.cpu
   image: facefusion:${IMAGE_TAG:-cpu}
-  command: [ 'python', 'facefusion.py', '${MODE:-run}', '--execution-providers', 'cpu' ]
+  command: [ 'python', 'facefusion.py', '${MODE:-run}', '--execution-providers', 'cpu', '--log-level', '${LOG_LEVEL:-info}' ]
   volumes:
   - .assets:/facefusion/.assets
   - .caches:/facefusion/.caches
